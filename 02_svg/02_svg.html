@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.js"></script>
+    </head>
+    <body>
+        <h1>SVG basic</h1>
+
+        <div id="p1">
+            <h2>svg标签</h2>
+            <svg height="100px" width="100px" style="background-color: lightgrey">
+                <rect x=5 y=5 width=10 height=10 fill="red" />
+            </svg>
+        </div>
+
+        <div id="p2">
+            <h2>svg标签与viewBox="0,0,200,200"</h2>
+            <svg width="400" height="200" viewBox="0 0 200 200" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="150" height="150" fill="#cd0000"/>
+            </svg>
+        </div>
+
+        <div id="p3">
+            <h2>perserveAspectRatio="xMinYMin meet"</h2>
+            <svg width="400" height="200" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin meet" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="150" height="150" fill="#cd0000"/>
+            </svg>
+        </div>
+
+        <div id="p4">
+            <h2>perserveAspectRatio="xMaxYMax meet"</h2>
+            <svg width="400" height="200" viewBox="0 0 200 200" preserveAspectRatio="xMaxYMax meet" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="150" height="150" fill="#cd0000"/>
+            </svg>
+        </div>
+
+        <div id="p5">
+            <h2>perserveAspectRatio="xMinyMin slice"</h2>
+            <svg width="400" height="200" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin slice" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="150" height="150" fill="#cd0000"/>
+            </svg>
+        </div>
+
+        <div id="p4">
+            <h2>perserveAspectRatio="xMinyMin alignment"</h2>
+            <svg width="400" height="200" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin alignment" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="150" height="150" fill="#cd0000"/>
+            </svg>
+        </div>
+
+    </body>
+    <script>
+
+    </script>
+</html>

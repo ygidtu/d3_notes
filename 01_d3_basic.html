@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.js"></script>
+    </head>
+    <body>
+        <h1>Learn D3</h1>
+
+        <p>
+            该节的目的很简单，简单看一下d3的一些基础性质和应用方法。基本上来说d3跟jquery非常接近，如果有足够的jQuery经验，简单看一下该节就好。
+            没必要花太多精力            
+        </p>
+
+        <h2>javascript 设定属性</h2>
+        <div id="1">
+            <p>Paragraph</p>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+            <p>Paragraph2</p>
+        </div>
+
+        <h2>d3链式声明</h2>
+        <div id="p2">
+            <p>Paragraph</p>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+            <p>Paragraph2</p>
+        </div>
+
+        <h2>d3链式声明设定属性</h2>
+        <div id="p3">
+            <p>Paragraph</p>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+            <p>Paragraph2</p>
+        </div>
+
+        <h4>根据奇偶数设定属性</h4>
+        <div id="p4">
+            <p>Paragraph</p>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+            <p>Paragraph2</p>
+        </div>
+
+        <h2>元素数量处理</h2>
+        <div id="p5">
+            <h4>自动补全</h4>
+            <p>Paragraph</p>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+            <p>Paragraph2</p>
+        </div>
+
+        <div id="p6">
+            <h4>自动删除多余元素</h4>
+            <p>Paragraph</p>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+            <p>Paragraph2</p>
+            <p>Paragraph4</p>
+            <p>Paragraph5</p>
+            <p>Paragraph6</p>
+            <p>Paragraph7</p>
+        </div>
+
+        <div id="p7">
+            <h4>正常应用情况</h4>
+        </div>
+
+        <div id="p8">
+            <h2>设置过渡</h2>
+            <div>D3 支持动画效果，这种动画效果可以通过对样式属性的过渡实现。其补间插值支持多种方式，比如线性、弹性等。此外 D3 内置了多种插值方式，比如对数值类型、字符类型路径数据以及颜色等。</div>
+
+            <svg height="100" width="100">
+                <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+            </svg>
+        </div>
+
+    </body>
+    <script>
+        // pure javascript style
+        var paragraphs = document.getElementById("1").getElementsByTagName("p");
+        for (var i = 0; i < paragraphs.length; i++) {
+            var paragraph = paragraphs.item(i);
+            paragraph.style.setProperty("color", "lightgrey", null);
+        }
+
+        // d3 支持链式声明
+        d3.select("#p2").select("p").style("color", "white");
+        d3.select("#p2").selectAll("p").style("background-color", "lightgrey");
+
+        // 通过回调函数，给每个paragraph都设定随机颜色属性
+        d3.select("#p3").selectAll("p").style("color", function() {
+            return "hsl(" + Math.random() * 360 + ",100%,50%)";
+        });
+
+        // 给奇偶数不同的元素分配不行的性质
+        d3.select("#p4").selectAll("p").style("color", function(d, i) {
+            return i % 2 ? "#111" : "#eee";
+        });
+
+        // 通过data array给每个元素设定特定的元素属性
+        d3.select("#p5")
+            .selectAll("p")
+            .data([4, 8, 15, 16, 23, 42])
+            .style("font-size", function(d) { return d + "px"; });
+
+        // 甚至可以检测到元素数量不足时，自动补全
+        d3.select("#p5")
+            .selectAll("p")
+            .data([4, 8, 15, 16, 23, 42])
+            .enter().append("p")
+            .text(function(d) { return "I’m number " + d + "!"; });
+
+        // 自动删除多余元素
+        var p = d3.select("#p6")
+            .selectAll("p")
+            .data([4, 8, 15, 16, 23, 42])
+            .text(function(d) { return d; });
+
+        p.exit().remove()  //移除多余的元素
+
+        // 常见情况是，根据数据先补全，在删除
+        // Update 情形2
+        var p = d3.select("#p7")
+        .selectAll("p")
+        .data([4, 8, 15, 16, 23, 42])
+        .text(function(d) { return d; });      
+
+        // Enter 情形1
+        p.enter().append("p")
+        .text(function(d) { return d; });
+
+        // Exit 情形3
+        p.exit().remove();
+
+        // Set transition, 设定一个有这750ms演示的过渡动画
+        d3.selectAll("circle").transition()
+            .duration(750)
+            .delay(function(d, i) { return i * 10; })
+            .attr("r", function(d) { return Math.sqrt(d * scale); });
+    </script>
+</html>
