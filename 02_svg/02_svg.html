@@ -47,6 +47,282 @@
             </svg>
         </div>
 
+        <div id="p5">
+            <h2>线条</h2>
+            <ul>
+                <li>x1="10px" x2="100px" y1="50px" y2="100px"</li>
+                <li>stroke="blue"</li>
+                <li>stroke-width=20</li>
+                <li>stroke-opacity=.4</li>
+                <li>stroke-dasharray="10,5,4,2"</li>
+            </ul>
+            <svg width="400" height="200" style="border:1px solid #cd0000;">
+                <line 
+                x1="10px" x2="100px" 
+                y1="50px" y2="100px" 
+                stroke="blue" 
+                stroke-width=20
+                stroke-opacity=.4
+                stroke-dasharray="10,5,4,2"
+                />
+            </svg>
+        </div>
+
+        <div id="p6">
+            <h2>矩形</h2>
+            <ul>
+                <li>fill="#cd0000"</li>
+                <li>fill-opacity=".5"</li>
+                <li>stroke="blue" stroke-width="2"</li>
+                <li>stroke-opacity=.4</li>
+                <li>rx="15"</li>
+                <li>rx="5" ry="25"</li>
+                <li>rx="25" ry="5"</li>
+            </ul>
+            <svg width="400" height="200" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="150" height="10" fill="#cd0000"/>
+                <rect x="30" y="30" width="150" height="10" fill="#cd0000" fill-opacity=".5"/>
+                <rect x="50" y="50" width="150" height="10" fill="#cd0000" stroke="blue" stroke-width="2"/>
+                <rect x="50" y="90" width="50" height="50" fill="#cd0000" 
+                rx="15"/>
+                <rect x="150" y="90" width="50" height="50" fill="#cd0000" 
+                rx="5" ry="25"/>
+                <rect x="250" y="90" width="50" height="50" fill="#cd0000" 
+                rx="25" ry="5"/>
+            </svg>
+        </div>
+
+        <div id="p7">
+            <h2>圆形/椭圆</h2>
+            <ul>
+                <li>cx="50" cy="50" r="10"</li>
+                <li>cx="50" cy="150" rx="10" ry="5"</li>
+            </ul>
+            <svg width="400" height="200" style="border:1px solid #cd0000;">
+                <circle cx="50" cy="50" r="10" fill="#cd0000"/>
+                <ellipse cx="50" cy="150" rx="10" ry="5" fill="#cd0000"/>
+            </svg>
+        </div>
+
+        <div id="p8">
+            <h2>多边形</h2>
+            <ul>
+                <li>points="100,10 150,90 60,210"</li>
+                <li>
+                    style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;"
+                </li>
+                <li>
+                    style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"
+                </li>
+            </ul>
+            <svg width="500" height="400" style="border:1px solid #cd0000;">
+                <polygon points="100,10 150,90 60,210" fill="#cd0000"/>
+                <polygon points="300,10 240,198 390,78 210,78 360,198"
+                style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;" />
+                <polygon points="300,210 240,398 390,278 210,278 360,398"
+            style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+            </svg>
+        </div>
+
+        <div id="p9">
+            <h2>折线</h2>
+            <ul>
+                <li>points="100,10 150,90 60,210"</li>
+                <li>
+                    style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;"
+                </li>
+                <li>
+                    style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"
+                </li>
+            </ul>
+            <svg width="500" height="400" style="border:1px solid #cd0000;">
+                <polyline points="100,10 150,90 60,210" stoke="red" stroke-width="5"/>
+                <polyline points="300,10 240,198 390,78 210,78 360,198"
+                style="fill:lime;stroke:purple;stroke-width:5;fill-rule:nonzero;" />
+            </svg>
+        </div>
+
+        <div id="p10">
+            <h2>路径</h2>
+            <svg height="400" width="450" style="border:1px solid #cd0000;">
+                <path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+                stroke-width="3" fill="none" />
+                <path id="lineBC" d="M 250 50 l 150 300" stroke="red"
+                stroke-width="3" fill="none" />
+                <path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
+                fill="none" />
+                <path d="M 100 350 q 150 -300 300 0" stroke="blue"
+                stroke-width="5" fill="none" />
+                <!-- Mark relevant points -->
+                <g stroke="black" stroke-width="3" fill="black">
+                <circle id="pointA" cx="100" cy="350" r="3" />
+                <circle id="pointB" cx="250" cy="50" r="3" />
+                <circle id="pointC" cx="400" cy="350" r="3" />
+                </g>
+                <!-- Label the points -->
+                <g font-size="30" font-family="sans-serif" fill="black" stroke="none"
+                text-anchor="middle">
+                <text x="100" y="350" dx="-30">A</text>
+                <text x="250" y="50" dy="-10">B</text>
+                <text x="400" y="350" dx="30">C</text>
+                </g>
+            </svg>
+
+            <h3>不同命令的示例</h3>
+            <svg height="400" width="450" style="border:1px solid #cd0000;">
+                <path d="M 10 10 l 100 300" stroke="red"
+                stroke-width="3" fill="none" />
+                <path d="M 100 60 H 300" stroke="black"
+                stroke-width="3" fill="none"/>
+                <path d="M 100 60 v 200" stroke="blue"
+                stroke-width="3" fill="none"/>
+                <path d="M 100 100 Q 200 150 100 150" stroke="blue"
+                stroke-width="3" fill="none"/>
+                <!-- Label the points -->
+                <g font-size="20" font-family="sans-serif" fill="black" stroke="none"
+                text-anchor="middle">
+                <text x="100" y="20">M 10 10 l 100 300</text>
+                <text x="200" y="50">M 20 60 H 200</text>
+                <text x="110" y="150" transform="rotate(90, 110, 150)">M 100 60 v 200</text>
+                </g>
+            </svg>
+        </div>
+
+        <div id="p11">
+            <h2>marker</h2>
+            <svg height="200" width="200" style="border:1px solid #cd0000;">
+                <defs>
+                    <marker id="marker" markerWidth="10" markerHeight="10" refX="0" refY="4" orient="auto">
+                        <path d="M 0 0 4 4 0 8" style="fill:none;stroke:black;"/>
+                    </marker>
+                </defs>
+
+                <path d="M 10 20 100 20 A 20 30 0 0 1 120 50 L 120 110"
+                    style="marker-start:url(#marker);marker-mid:url(#marker);marker-end:url(#marker);fill:none;stroke:black;"/>
+            </svg>
+        </div>
+
+        <div id="p12">
+            <h2>图案</h2>
+            <h3>patternUnits = objectBoundingBox</h3>
+            <svg>
+                <defs>
+                    <pattern id="tile" x="0" y="0" width="20%" height="20%" patternUnits="objectBoundingBox">
+                            <path d="M 0 0 Q 5 20 10 10 T 20 20" style="stroke:black;fill:none"></path>
+                        <path d="M 0 0 h 20 v 20 h -20 z" style="stroke:black;fill:none"></path>
+                    </pattern>
+                </defs>
+                <path d="M 0 0 Q 5 20 10 10 T 20 20" style="stroke:black;fill:none"></path>
+                <path d="M 0 0 h 20 v 20 h -20 z" style="stroke:black;fill:none"></path>
+                <rect x="40" y="0" width="100" height="100" style="fill:url(#tile);stroke:black"></rect>	
+                <rect x="155" y="0" width="70" height="80" style="fill:url(#tile);stroke:black"></rect>
+                <rect x="250" y="0" width="150" height="130" style="fill:url(#tile);stroke:black"></rect>
+            </svg>
+            <h3>patternUnits = userSpaceOnUse</h3>
+            <svg>
+                <defs>
+                    <pattern id="tile" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 0 0 Q 5 20 10 10 T 20 20" style="stroke:black;fill:none"></path>
+                        <path d="M 0 0 h 20 v 20 h -20 z" style="stroke:black;fill:none"></path>
+                    </pattern>
+                </defs>
+                <path d="M 0 0 Q 5 20 10 10 T 20 20" style="stroke:black;fill:none"></path>
+                <path d="M 0 0 h 20 v 20 h -20 z" style="stroke:black;fill:none"></path>
+                <rect x="40" y="0" width="100" height="100" style="fill:url(#tile);stroke:black"></rect>	
+                <rect x="155" y="0" width="70" height="80" style="fill:url(#tile);stroke:black"></rect>
+                <rect x="250" y="0" width="150" height="130" style="fill:url(#tile);stroke:black"></rect>
+            </svg>
+            <h3>patternContentUnits属性</h3>
+            <svg>
+                <defs>
+                    <pattern id="tile" x="0" y="0" width=".2" height=".2" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
+                        <path d="M 0 0 Q .05 .2 .1 .1 T .2 .2" style="stroke:black;fill:none;stroke-width:0.01;"></path>
+                        <path d="M 0 0 h 0.2 v 0.2 h -0.2z" style="stroke:black;stroke-width:0.01;fill:none"></path>
+                    </pattern>
+                </defs>
+                <g transform="translate(20,20)">
+                    <rect x="0" y="0" width="100" height="100" style="fill:url(#tile);stroke:black"></rect>	
+                </g>
+                <g transform="translate(135,20)">
+                    <rect x="0" y="0" width="150" height="100" style="fill:url(#tile);stroke:black"></rect>	
+                </g>
+                <g transform="translate(300,20)">
+                    <rect x="0" y="0" width="80" height="150" style="fill:url(#tile);stroke:black"></rect>	
+                </g>
+            </svg>
+        </div>
+
+        <div>
+            <h2>线性渐变</h2>
+            <svg>
+                <defs>
+                    <linearGradient id="linear">
+                        <stop offset="0%" style="stop-color:#ffcc00;"></stop>
+                        <stop offset="100%" style="stop-color:#0099cc;"></stop>
+                    </linearGradient>
+                </defs>
+                <rect x="20" y="20" width="200" height="100" style="fill:url(#linear);stroke:black;"></rect> 
+            </svg>
+        </div>
+
+        <div>
+            <h2>径向渐变</h2>
+            <svg>
+                <defs>
+                    <radialGradient id="radial" cx="50%" cy="50%" >
+                        <stop offset="0%" style="stop-color:#f00;" />
+                        <stop offset="50%" style="stop-color:#0f0;" />
+                        <stop offset="100%" style="stop-color:#00f;" />
+                    </radialGradient>
+                </defs>
+                <rect x="20" y="20" width="200" height="200" style="fill:url(#radial);stroke:black;" />	
+            </svg>
+
+        </div>
+        
+
+        <div id="p12">
+            <h2>文本</h2>
+            <svg height="400" width="450" style="border:1px solid #cd0000;">
+                <text x="0" y="15" fill="red">x="0" y="15" fill="red"</text>
+
+                <text x="0" y="15" fill="red" transform="rotate(30 20,40)">x="0" y="15" fill="red" transform="rotate(30 20,40)"</text>
+
+                <text x="10" y="20" style="fill:red;">Several lines:
+                    <tspan x="10" y="145">tspan: x="10" y="145"</tspan>
+                    <tspan x="10" y="170">换行:x="10" y="170"</tspan>
+                </text>
+
+                <a xlink:href="#10" target="_blank">
+                <text x="0" y="250" fill="red">可点击</text>
+                </a>
+            </svg>
+        </div>
+
+        <div>
+            <h2>文本路径</h2>
+            <svg>
+                <defs>
+                    <path id="path" d="M30 40 C 50 10 ,70 10,120 40 S150 0,200 40" style="fill:none;stroke:black"></path>
+                </defs>
+                <g transform="translate(10,50)">
+                    <path id="path" d="M30 40 C 50 10 ,70 10,120 40 S150 0,200 40" style="fill:none;stroke:black"></path>
+                    <text>
+                        <textPath xlink:href="#path">
+                            hello world
+                        </textPath>
+                    </text>
+                </g>
+                <g transform="translate(10,100)">
+                    <path id="path" d="M30 40 C 50 10 ,70 10,120 40 S150 0,200 40" style="fill:none;stroke:black"></path>
+                    <text>
+                        <textPath xlink:href="#path" startOffset="50%" text-anchor="middle">
+                            hello world
+                        </textPath>
+                    </text>
+                </g>
+            </svg>
+        </div>
     </body>
     <script>
 
