@@ -323,6 +323,140 @@
                 </g>
             </svg>
         </div>
+
+        <div>
+            <h2>裁剪</h2>
+            <svg>
+                <defs>
+                    <clipPath id="rectClip">
+                        <rect x="100" y="100" width="100" height="90" fill="none" stroke="black"></rect>
+                        <circle cx="300" cy="150" r="60" fill="none"></circle>
+                        <path d="M100 50L150,50L100,20L40,60Z" fill="none"></path>
+                    </clipPath>
+                </defs>
+                <image x="0" y="0" width="480" height="270" xlink:href="./10.0.jpg" style="clip-path:url(#rectClip);"></image>
+                <image x="0" y="0" width="480" height="270" xlink:href="./10.0.jpg" opacity="0.2"></image>
+            </svg>
+        </div>
+        <div>
+            <h2>蒙版</h2>
+            <svg>
+                <defs>
+                    <mask id="mask" x="0" y="0" width="1" height="1" maskContentUnits="objectBoundingBox">
+                        <circle cx=".500" cy=".50" r=".30" fill="red"></circle>
+                    </mask>
+                </defs>
+                <rect x="0" y="0" width="100" height="100" style="mask:url(#mask)"></rect>
+                <rect x="0" y="0" width="100" height="100" fill="none" stroke="black"></rect>
+            </svg>
+        </div>
+
+        <div>
+            <h2>高斯滤镜</h2>
+            <svg>
+                <defs>
+                    <filter id="gaussian" x="0" y="0">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur>
+                    </filter>
+                </defs>
+                <g transform="translate(10,10)">
+                    <rect x="10" y="10" width="100" height="100" fill="#ccc" filter="url(#gaussian)"></rect>
+                </g>
+                <g>
+                    <rect x="10" y="10" width="100" height="100" fill="black"></rect>
+                </g>
+            </svg>
+        </div>
+
+        <div>
+            <h2>高斯滤镜（合并一次性渲染）</h2>
+            <svg>
+                <defs>
+                    <filter id="gaussian" x="0" y="0">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"></feGaussianBlur>
+                    <feOffset in="blur" dx="10" dy="10" result="offsetBlur"></feOffset>
+                        <feMerge>
+                            <feMergeNode in="offsetBlur" />
+                            <feMergeNode in="SourceGraphic" /> 
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g>
+                    <rect x="10" y="10" width="100" height="100" fill="black" filter="url(#gaussian)"></rect>
+                </g>
+            </svg>
+        </div>
+
+        <div>
+            <h2>发光滤镜</h2>
+            <svg>
+                <defs>
+                    <filter id="matrix" x="0" y="0">
+                        <feColorMatrix type="matrix" values="
+                            0 0 0 0   0
+                            0 0 0 0.9 0
+                            0 0 0 0.9 0
+                            0 0 0 1   0
+                        "></feColorMatrix>
+                    </filter>
+                </defs>
+                <text x="10" y="100" font-size="40" style="filter:url(#matrix)">发光滤镜</text>
+            </svg>
+        </div>
+
+        <div>
+            <h2>feImage</h2>
+            <svg>
+                <defs>
+                    <filter id="image" x="0" y="0">
+                        <feImage xlink:href="10.0.jpg" result="bg" x="10" y="10" width="200" height="200" preserveAspectRatio="none"></feImage>
+                    </filter>
+                </defs>
+                <g style="filter:url(#image)">
+                    <rect x="10" y="10" width="200" height="300" stroke="black"></rect>
+                </g>
+                <g>
+                    <rect x="10" y="10" width="200" height="300" fill="none" stroke="black"></rect>
+                </g>
+                
+            </svg>
+        </div>
+
+        <div>
+            <h2>光照效果</h2>
+            <svg>
+                <defs>
+                    <filter id="diff-light" color-interpolate-filter="sRGB" x="0" y="0">
+                        <feDiffuseLighting in="SourceGraphic"
+                            lighting-color="#ffffcc"
+                            surfaceScale="1"
+                            diffuseConstant="0.5"
+                            result="diffuseOutput">
+                            <fePointLight x="50" y="50" z="20"/>
+                        </feDiffuseLighting>
+                        <feComposite in1="diffuseOutput" in2="SourceGraphic" operator="in" result="diffuseOutput"></feComposite>
+                        <feBlend in1="diffuseOutput" in2="SourceGraphic" mode="screen"></feBlend>
+                    </filter>
+                </defs>
+                <circle cx="50" cy="50" r="50" style="filter:url(#diff-light)"></circle>
+                <circle cx="170" cy="50" r="50" ></circle>  
+            </svg>
+        </div>
+
+        <div>
+            <h2>动画</h2>
+            <svg>
+                <rect x="10" y="10" width="200" height="200" stroke="black" fill="none">
+                    <animate 
+                        attributeName="width" 
+                        attributeType="XML" 
+                        from="200" to="20" 
+                        begin="0s" dur="5s" 
+                        fill="freeze">
+                    </animate>
+                </rect>
+            </svg>
+        </div>
     </body>
     <script>
 
